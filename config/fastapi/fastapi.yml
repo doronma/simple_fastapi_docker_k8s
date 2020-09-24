@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fastapisimple-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: fastapisimple
+  template:
+    metadata:
+      name: fastapisimple 
+      labels:
+        env: dev
+        app: fastapisimple
+      annotations:
+        description: "This is a very simple fastapi image"
+    spec:
+      containers:
+        - image: doroncomputer/fastapisimple:v1
+          name: fastapisimple
+          ports:
+          - name: http
+            containerPort: 80
+            protocol: TCP
