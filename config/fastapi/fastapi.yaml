@@ -9,7 +9,7 @@ spec:
       app: fastapisimple
   template:
     metadata:
-      name: fastapisimple 
+      name: fastapisimple
       labels:
         env: dev
         app: fastapisimple
@@ -20,6 +20,12 @@ spec:
         - image: doroncomputer/fastapisimple:v1
           name: fastapisimple
           ports:
-          - name: http
-            containerPort: 80
-            protocol: TCP
+            - name: http
+              containerPort: 80
+              protocol: TCP
+          imagePullPolicy: "Always"
+          env:
+            - name: REDIS_HOST
+              value: redis
+            - name: REDIS_PORT
+              value: "6379"

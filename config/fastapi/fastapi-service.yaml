@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fastapisimple
+  labels:
+    app: fastapisimple
+    service: fastapisimple
+spec:
+  ports:
+    - port: 80
+      name: http
+  selector:
+    app: fastapisimple

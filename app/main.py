@@ -5,7 +5,7 @@ from fastapi.responses import JSONResponse
 
 
 from app.ex import RestException
-from app.routers import customers, items, persons, users
+from app.routers import customers, items, persons, users, myredis
 
 
 app = FastAPI()
@@ -21,7 +21,7 @@ async def person_exception_handler(request: Request, ex: RestException):
 
 @app.get("/")
 def read_root():
-    return {"Hello": "World"}
+    return {"Hello": "World1"}
 
 
 # Unchecked body
@@ -41,3 +41,4 @@ app.include_router(users.router)
 app.include_router(persons.router)
 app.include_router(customers.router)
 app.include_router(items.router)
+app.include_router(myredis.router)
