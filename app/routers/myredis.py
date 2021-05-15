@@ -27,3 +27,9 @@ async def test_redis():
     except ConnectionError:
         print("Error: redis connection error")
         raise RestException("Redis Connection Error")
+
+
+@router.get("/password", tags=["redis"])
+async def get_password():
+    password = os.environ["SOME_PASSWORD"]
+    return [{"some_password": password}]

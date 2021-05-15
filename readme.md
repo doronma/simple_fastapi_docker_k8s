@@ -15,4 +15,5 @@ run start-ssh-agent
 
 ## set git push
 
+from command line:
 start-ssh-agent

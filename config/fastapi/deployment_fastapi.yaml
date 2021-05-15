@@ -33,3 +33,8 @@ spec:
                   key: redis.host
             - name: REDIS_PORT
               value: "6379"
+            - name: SOME_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: my-secrets
+                  key: MYSEC

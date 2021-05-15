@@ -16,6 +16,8 @@ spec:
         - uri:
             exact: /redis
         - uri:
+            exact: /password
+        - uri:
             exact: /
 
       route:
