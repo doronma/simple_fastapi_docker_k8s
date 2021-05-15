@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: fastapisimple-deployment
+  name: fastapi-deployment
 spec:
   replicas: 2
   selector:
@@ -9,12 +9,11 @@ spec:
       app: fastapisimple
   template:
     metadata:
-      name: fastapisimple
       labels:
         env: dev
         app: fastapisimple
       annotations:
-        description: "This is a very simple fastapi image"
+        description: "This is a very simple fastapi front end"
     spec:
       containers:
         - image: doroncomputer/fastapisimple:v1
@@ -24,8 +23,13 @@ spec:
               containerPort: 80
               protocol: TCP
           imagePullPolicy: "Always"
+          # Set environmnet variables
           env:
             - name: REDIS_HOST
-              value: redis
+              # Get host from config file
+              valueFrom:
+                configMapKeyRef:
+                  name: api-config
+                  key: redis.host
             - name: REDIS_PORT
               value: "6379"

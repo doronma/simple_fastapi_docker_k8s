@@ -1,0 +1,16 @@
+# Main istio Gateway
+
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: main-gateway
+spec:
+  selector:
+    istio: ingressgateway # use istio default controller
+  servers:
+    - port:
+        number: 80
+        name: http
+        protocol: HTTP
+      hosts:
+        - "simple-fastapi.com" # host is set in C:\Windows\System32\drivers\etc\host file
