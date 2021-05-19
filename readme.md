@@ -2,7 +2,7 @@
 
 ## startup
 
-uvicorn app.main:app
+cd
 
 ## swagger ui
 

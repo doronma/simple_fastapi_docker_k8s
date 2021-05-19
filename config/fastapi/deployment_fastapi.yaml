@@ -21,7 +21,7 @@ spec:
           ports:
             - name: http
               containerPort: 80
-              protocol: TCP
+
           imagePullPolicy: "Always"
           # Set environmnet variables
           env:
@@ -31,6 +31,18 @@ spec:
                 configMapKeyRef:
                   name: api-config
                   key: redis.host
+            - name: EXPRESS_HOST
+              # Get host from config file
+              valueFrom:
+                configMapKeyRef:
+                  name: api-config
+                  key: express.host
+            - name: EXPRESS_PORT
+              # Get port from config file
+              valueFrom:
+                configMapKeyRef:
+                  name: api-config
+                  key: express.port
             - name: REDIS_PORT
               value: "6379"
             - name: SOME_PASSWORD

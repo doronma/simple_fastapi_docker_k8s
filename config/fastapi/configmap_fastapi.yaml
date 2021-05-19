@@ -4,3 +4,5 @@ metadata:
   name: api-config
 data:
   redis.host: "redis-service"
+  express.host: "simple-express-service"
+  express.port: "3000"

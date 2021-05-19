@@ -5,7 +5,7 @@ from fastapi.responses import JSONResponse
 
 
 from app.ex import RestException
-from app.routers import customers, items, persons, users, myredis
+from app.routers import customers, items, persons, users, myredis, external_request
 
 
 app = FastAPI()
@@ -37,8 +37,15 @@ def ping(token: str = Header(...)):
     return {"message": "ping ok", "token": token}
 
 
+@app.middleware("http")
+async def add_process_time_header(request: Request, call_next):
+    response = await call_next(request)
+    response.headers["app_type"] = 'fastapi'
+    return response
+
 app.include_router(users.router)
 app.include_router(persons.router)
 app.include_router(customers.router)
 app.include_router(items.router)
 app.include_router(myredis.router)
+app.include_router(external_request.router)

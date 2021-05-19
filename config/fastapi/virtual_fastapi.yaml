@@ -18,6 +18,8 @@ spec:
         - uri:
             exact: /password
         - uri:
+            exact: /external_message
+        - uri:
             exact: /
 
       route:

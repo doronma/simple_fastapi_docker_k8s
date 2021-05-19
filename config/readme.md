@@ -33,3 +33,4 @@ kubectl create secret generic my-secrets --from-literal MYSEC=yaara2005
 http://simple-fastapi.com/
 http://simple-fastapi.com/redis
 http://simple-fastapi.com/persons
+http://simple-fastapi.com/password
